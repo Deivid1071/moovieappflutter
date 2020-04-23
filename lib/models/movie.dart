@@ -1,4 +1,4 @@
-class Results {
+class Movie {
   String posterPath;
   bool adult;
   String overview;
@@ -10,11 +10,11 @@ class Results {
   String title;
   String backdropPath;
   double popularity;
-  int voteCount;
+  double voteCount;
   bool video;
   double voteAverage;
 
-  Results({
+  Movie(
     this.posterPath,
     this.adult,
     this.overview,
@@ -29,41 +29,22 @@ class Results {
     this.voteCount,
     this.video,
     this.voteAverage,
-  });
+  );
 
-  Results.fromJson(Map<String, dynamic> json) {
-    popularity = json['popularity'];
-    voteCount = json['vote_count'];
-    video = json['video'];
+  Movie.fromJson(Map<String, dynamic> json) {
     posterPath = json['poster_path'];
-    id = json['id'];
     adult = json['adult'];
-    backdropPath = json['backdrop_path'];
-    originalLanguage = json['original_language'];
-    originalTitle = json['original_title'];
-    genreIds = json['genre_ids'].cast<int>();
-    title = json['title'];
-    voteAverage = json['vote_average'].toDouble();
     overview = json['overview'];
     releaseDate = json['release_date'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['popularity'] = this.popularity;
-    data['vote_count'] = this.voteCount;
-    data['video'] = this.video;
-    data['poster_path'] = this.posterPath;
-    data['id'] = this.id;
-    data['adult'] = this.adult;
-    data['backdrop_path'] = this.backdropPath;
-    data['original_language'] = this.originalLanguage;
-    data['original_title'] = this.originalTitle;
-    data['genre_ids'] = this.genreIds;
-    data['title'] = this.title;
-    data['vote_average'] = this.voteAverage;
-    data['overview'] = this.overview;
-    data['release_date'] = this.releaseDate;
-    return data;
-  }
+    genreIds = json['genre_ids'].cast<int>();
+    id = json['id'];
+    originalTitle = json['original_title'];
+    originalLanguage = json['original_language'];
+    title = json['title'];
+    backdropPath = json['backdrop_path'];
+    popularity = json['popularity'];
+    voteCount = json['vote_count'].toDouble();
+    video = json['video'];
+    voteAverage = json['vote_average'].toDouble();
+  }  
 }

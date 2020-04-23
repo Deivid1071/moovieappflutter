@@ -10,8 +10,8 @@ class IconText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       
-      height: 80,
-      width: 80,
+      height: 70,
+      width: 70,
       decoration: BoxDecoration(
         //color: Theme.of(context).primaryColor,
       ),

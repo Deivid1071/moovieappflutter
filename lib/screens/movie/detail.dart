@@ -1,13 +1,26 @@
+import 'dart:core';
 import 'package:flutter/material.dart';
-import 'package:tmdbmovieapp/components/icondescription.dart';
+import 'package:intl/intl.dart';
+import 'package:tmdbmovieapp/components/iconandtext.dart';
+import 'package:tmdbmovieapp/models/movie.dart';
 
 class Detail extends StatelessWidget {
+  final Movie movie;
+
+  const Detail(this.movie);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          leading: Icon(Icons.movie_filter),
-          title: Text('Detalhes sobre o filme')),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            Icon(Icons.movie_filter),
+            Text('Detalhes do filme'),
+          ],
+        ),
+      ),
       body: Column(
         children: <Widget>[
           Container(
@@ -28,13 +41,13 @@ class Detail extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(16.0),
                   child: Image.network(
-                    'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg',
+                    'https://image.tmdb.org/t/p/w400${movie.posterPath}',
                     height: 240.0,
                     width: 240.0,
                   ),
                 ),
                 Text(
-                  'Titulo do filme',
+                  movie.title,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 24.0,
@@ -45,33 +58,42 @@ class Detail extends StatelessWidget {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height/3,
+              height: MediaQuery.of(context).size.height / 3,
               child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
                   children: <Widget>[
-                    IconText(Icons.sentiment_satisfied, 'popularity'),
-                    IconText(Icons.star_border, 'voteCount'),
-                    IconText(Icons.thumb_up, 'voteAverage'),
+                    Container(
+                      height: MediaQuery.of(context).size.height / 6,
+                      child: Text(
+                        movie.overview,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    Spacer(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        IconText(Icons.thumb_up, movie.voteAverage.toString()),
+                        IconText(Icons.star_border, movie.voteCount.toString()),
+                        IconText(
+                            Icons.date_range,
+                            DateFormat("d/M/y")
+                                .format(DateTime.parse(movie.releaseDate))),
+                      ],
+                    ),
                   ],
                 ),
-                Spacer(),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    IconText(Icons.title, 'originalTitle'),
-                    IconText(Icons.comment, 'originalLanguage'),
-                    IconText(Icons.date_range, 'releaseDate'),
-                  ],
-                ),
-              ],
-            ),
-          ))
+              ))
         ],
       ),
     );
   }
 }
+
+//new DateFormat.yMd("pt_BR").format(DateTime.parse(movie.releaseDate))
