@@ -42,6 +42,10 @@ Future<List<Movie>> findAll(String searchQuery) async {
     (decodedJson['results'])
         .forEach((movie) => movies.add(Movie.fromJson(movie)));
   }
-  debugPrint(movies.toString());
+  
+   movies.sort((a, b) {
+       return b.releaseDate.toLowerCase().compareTo(a.releaseDate.toLowerCase());
+     });
+  
   return movies;
 }
