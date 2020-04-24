@@ -30,7 +30,7 @@ final Client client = HttpClientWithInterceptor.build(
 );
 const String _apiKey = 'd7aebb08ea53848cae0e9453a1731313';
 
-Future<List<Movie>> findAll(String searchQuery) async {  
+Future<List<Movie>> findAll(String searchQuery) async {
   final Response response = await client
       .get(
           'https://api.themoviedb.org/3/search/movie?api_key=$_apiKey&language=pt-BR&query=$searchQuery')
@@ -42,10 +42,15 @@ Future<List<Movie>> findAll(String searchQuery) async {
     (decodedJson['results'])
         .forEach((movie) => movies.add(Movie.fromJson(movie)));
   }
-  
-   movies.sort((a, b) {
-       return b.releaseDate.toLowerCase().compareTo(a.releaseDate.toLowerCase());
-     });
-  
+
+  // if(sortByName == 1){
+  //   movies.sort((a, b) {
+  //      return b.releaseDate.toLowerCase().compareTo(a.releaseDate.toLowerCase());
+  //    });
+  // }
+  movies.sort((a, b) {
+    return b.releaseDate.toLowerCase().compareTo(a.releaseDate.toLowerCase());
+  });
+
   return movies;
 }
