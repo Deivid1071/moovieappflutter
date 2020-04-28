@@ -35,11 +35,11 @@ class Movie implements Comparable<Movie> {
 
   @override
   int compareTo(Movie other) {
-    int yearDiference = ano - other.ano;
+    int yearDiference = other.ano - ano ;
 
     return yearDiference != 0
         ? yearDiference
-        : other.title.compareTo(this.title);
+        : this.title.compareTo(other.title);
   }
 
 
