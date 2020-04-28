@@ -1,16 +1,23 @@
-# tmdbmovieapp
+# Aplicação Movie Search App
 
-A new Flutter project.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Mobile App
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![](https://github.com/Deivid1071/moovieappflutter/blob/master/telas/telahome.jpeg?raw=true)
+![](https://github.com/Deivid1071/moovieappflutter/blob/master/telas/telalista.jpeg?raw=true)
+![](https://github.com/Deivid1071/moovieappflutter/blob/master/telas/teladetalhes.jpeg?raw=true)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+### Funcionalidades
+* Campo de pesquisa de filmes;
+* Listagem dos resultados obtidos;
+* Detalhes do filme selecionado na lista de resultados;
+
+### Techs utilizadas
+
+* Flutter;
+* Http;
+* Http_Interceptor;
+
