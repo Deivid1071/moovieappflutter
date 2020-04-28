@@ -26,41 +26,40 @@ class Detail extends StatelessWidget {
           Column(
             children: <Widget>[
               Container(
-                height: MediaQuery.of(context).size.longestSide / 2,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(24),
-                    bottomLeft: Radius.circular(24),
-                  ),
-                ),
-                padding: EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 24.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(16.0),
-                      child: Image.network(
-                        'https://image.tmdb.org/t/p/w400${movie.posterPath}',
-                        height: 240.0,
-                        width: 240.0,
-                      ),
+                  height: MediaQuery.of(context).size.longestSide / 2,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(24),
+                      bottomLeft: Radius.circular(24),
                     ),
-                    SingleChildScrollView(
-                      child: Text(
-                        movie.title,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24.0,
-                          fontWeight: FontWeight.bold,
+                  ),
+                  padding: EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 24.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(16.0),
+                          child: Image.network(
+                            'https://image.tmdb.org/t/p/w400${movie.posterPath}',
+                            height: 240.0,
+                            width: 240.0,
+                          ),
                         ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+                        Text(
+                          movie.title,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )),
               Container(
                   height: MediaQuery.of(context).size.longestSide / 3,
                   child: Padding(
@@ -85,14 +84,17 @@ class Detail extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
+                            IconText(Icons.thumb_up,
+                                movie.voteAverage.toString(), 'Nota'),
                             IconText(
-                                Icons.thumb_up, movie.voteAverage.toString(), 'Nota'),
-                            IconText(
-                                Icons.star_border, movie.voteCount.toString(), 'Estrelas recebidas'),
+                                Icons.star_border,
+                                movie.voteCount.toString(),
+                                'Estrelas recebidas'),
                             IconText(
                                 Icons.date_range,
                                 DateFormat("d/M/y")
-                                    .format(DateTime.parse(movie.releaseDate)), 'Lançamento'),
+                                    .format(DateTime.parse(movie.releaseDate)),
+                                'Lançamento'),
                           ],
                         ),
                       ],

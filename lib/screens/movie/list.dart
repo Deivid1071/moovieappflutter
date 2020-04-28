@@ -40,6 +40,7 @@ class MovieList extends StatelessWidget {
                   final List<Movie> movies = snapshot.data;
                   if (movies.isNotEmpty) {
                     return ListView.builder(
+                      reverse: true,
                       itemBuilder: (context, index) {
                         final Movie movie = movies[index];
                         return MovieItem(

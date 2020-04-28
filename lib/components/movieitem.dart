@@ -11,9 +11,9 @@ class MovieItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final array = movie.releaseDate.split("-");
+  //  final array = movie.releaseDate.split("-");
 
-    debugPrint(array.toString());
+    debugPrint(movie.arrayDate[0]);
 
     return Card(
       child: ListTile(
@@ -28,7 +28,7 @@ class MovieItem extends StatelessWidget {
         ),
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 16.0),
-          child: Text('Ano de lançamento ${array[0]}'),
+          child: Text('Ano de lançamento ${movie.ano}'),
         ),
         isThreeLine: true,
       ),

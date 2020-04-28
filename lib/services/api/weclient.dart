@@ -4,6 +4,7 @@ import 'package:http/http.dart';
 import 'package:http_interceptor/http_interceptor.dart';
 import 'package:tmdbmovieapp/models/movie.dart';
 
+
 class LoggingInterceptor implements InterceptorContract {
   @override
   Future<RequestData> interceptRequest({RequestData data}) async {
@@ -43,14 +44,8 @@ Future<List<Movie>> findAll(String searchQuery) async {
         .forEach((movie) => movies.add(Movie.fromJson(movie)));
   }
 
-  // if(sortByName == 1){
-  //   movies.sort((a, b) {
-  //      return b.releaseDate.toLowerCase().compareTo(a.releaseDate.toLowerCase());
-  //    });
-  // }
-  movies.sort((a, b) {
-    return b.releaseDate.toLowerCase().compareTo(a.releaseDate.toLowerCase());
-  });
+  
+  movies.sort();
 
   return movies;
 }

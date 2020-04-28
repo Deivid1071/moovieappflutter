@@ -1,4 +1,4 @@
-class Movie {
+class Movie implements Comparable<Movie> {
   String posterPath;
   bool adult;
   String overview;
@@ -13,8 +13,10 @@ class Movie {
   double voteCount;
   bool video;
   double voteAverage;
+  List<String> arrayDate;
+  int ano;
 
-  Movie(
+  Movie({
     this.posterPath,
     this.adult,
     this.overview,
@@ -29,7 +31,17 @@ class Movie {
     this.voteCount,
     this.video,
     this.voteAverage,
-  );
+  });
+
+  @override
+  int compareTo(Movie other) {
+    int yearDiference = ano - other.ano;
+
+    return yearDiference != 0
+        ? yearDiference
+        : other.title.compareTo(this.title);
+  }
+
 
   Movie.fromJson(Map<String, dynamic> json) {
     posterPath = json['poster_path'];
@@ -46,5 +58,7 @@ class Movie {
     voteCount = json['vote_count'].toDouble();
     video = json['video'];
     voteAverage = json['vote_average'].toDouble();
-  }  
+    arrayDate = releaseDate.split("-");
+    ano = int.parse(arrayDate[0]);
+  }
 }
