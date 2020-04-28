@@ -5,9 +5,9 @@
 
 ## Mobile App
 
-![](https://github.com/Deivid1071/moovieappflutter/blob/master/telas/telahome.png?raw=true)
-![](https://github.com/Deivid1071/moovieappflutter/blob/master/telas/telalista.jpg?raw=true)
-![](https://github.com/Deivid1071/moovieappflutter/blob/master/telas/teladetalhes.png?raw=true)
+![](https://github.com/Deivid1071/movieappflutter/blob/master/telas/telahome.png?raw=true)
+![](https://github.com/Deivid1071/movieappflutter/blob/master/telas/telalista.jpg?raw=true)
+![](https://github.com/Deivid1071/movieappflutter/blob/master/telas/teladetalhes.png?raw=true)
 
 
 ### Funcionalidades
